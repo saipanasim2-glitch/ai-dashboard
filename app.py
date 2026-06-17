@@ -11,8 +11,8 @@ st.set_page_config(
     layout="wide"
 )
 init_db()
-if "user" not in st.session_state:
-    st.session_state.user = None
+if "user" not in st.session_state.user is None:
+    st.session_state.user = {"email": "admin@test.com", "plan": "pro"}
 if "last_result" not in st.session_state:
    st.session_state.last_result = None
 def show_auth_page():
@@ -124,7 +124,7 @@ def show_dashboard():
             st.markdown("**Export Result:**")
             if check_export_access(user):
                 st.download_button(
-                    "⬇️ Download Result",
+                    "⬇️ Download Resultgit",
                     data=result["output"],
                     file_name="ai_result.txt",
                     mime="text/plain",
