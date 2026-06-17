@@ -11,10 +11,10 @@ st.set_page_config(
     layout="wide"
 )
 init_db()
-if "user" not in st.session_state.user is None:
-    st.session_state.user = {"email": "admin@test.com", "plan": "pro"}
-if "last_result" not in st.session_state:
-   st.session_state.last_result = None
+if "user" not in st.session_state:
+    st.session_state["user"] = {"email": "admin@test.com", "plan": "pro"}
+elif st.session_state["user"] is None:
+   st.session_state["user"] = {"email": "admin@test.com", "plan": "pro"}
 def show_auth_page():
     col1,col2,col3 = st.columns([1, 2, 1])
     with col2:
